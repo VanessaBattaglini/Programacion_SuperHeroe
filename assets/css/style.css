@@ -1,0 +1,34 @@
+body {
+    font-family: 'Protest Riot';
+    background-color: rgb(251, 139, 131);
+}
+
+#image {
+    width: 600px;
+    margin-top: 30px;
+    margin-left: 550px;
+}
+#form {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+}
+
+#etiqueta {
+    font-size: 28px;
+    color:rgb(71, 109, 70); 
+}
+#busqueda {
+    width: 400px;
+    margin-left: 450px;
+    margin-top: 10px;
+}
+
+button {
+    margin-top: 8px;
+    width: 100px;
+    border-radius: 20%;
+    margin-left: 600px;
+    margin-top: 20px;
+
+}
