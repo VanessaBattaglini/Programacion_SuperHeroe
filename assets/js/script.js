@@ -1,41 +1,68 @@
-// let input = getElementById('busqueda');
-// let boton = getElementById('boton');
-
-
-// //Validación de texto numéricos
-
-// function validar(numeros) {
-//     let validacion = true;
+$(document).ready(function () {
     
-// let validarNumeros = /^[0-9]+$/; 
+    $("#form").submit(function (event) {
+        event.preventDefault(); // Evitar que el formulario se envíe automáticamente el evento submit
 
-//     document.querySelector("#busqueda").innerHTML = "";
-//     if (expresion.test(input.value) == false) {
-//     validacion = false;
-//     alert("Debes ingresar un número");
-//     }
-
-
-//     return validacion;
-// }
-// boton.addEventListener('submit', function (e) {
-//     e.preventDefault();
-// })
-
-$(document).ready(function(){
-    $("#boton").click(function(){
-        // Capturar el valor del campo de búsqueda
+        // Capturar el valor del campo de búsqueda con la información ingresada por el usuario
         let valorBusqueda = $("#busqueda").val();
+        
 
         // Validar que solo ingrese números
         let validarNumeros = /^[0-9]+$/;
         if (!validarNumeros.test(valorBusqueda)) {
-            alert("Debes ingresar sólo numeros");
+            alert("Debes ingresar sólo números");
             return;
         }
-        if (valorBusqueda > 732) {
-        alert('Debes ingresar un número menor a 732')
-    }
-    });
-    
+        
+        $.ajax({
+            type: "GET",
+            url: `https://www.superheroapi.com/api.php/10233251796096420/${valorBusqueda}`,
+            dataType: "json",
+            success: function (data) {
+                if (data.response === "success") { //Diseño de las Cards por superheroe
+                    let superHero = `
+    <h3 class="text-center">Super Heroe Encontrado</h3>
+    <div class="card bg-primary-subtle">
+        <div class="row">
+            <div class="col-md-4">
+            <img src="${data.image.url}" class="card-img" alt="hero" />
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title bg-warning-subtle">Nombre: ${data.name} </h5>
+                <p class="card-text">
+                Conexiones:${data.connections["group-affiliation"]}
+                </p>
+            <ul class="list-group">
+                <li class="list-group-item bg-body-secondary">
+                    <em>Publicado por </em>: ${data.biography.publisher}
+                </li>
+                <li class="list-group-item bg-body-secondary">
+                    <em>Ocupación: ${data.work.occupation} </em>
+                </li>
+                <li class="list-group-item bg-body-secondary">
+                    <em>Primera Aparición:
+                    ${data.biography["first-appearance"]}</em>
+                </li>
+                <li class="list-group-item bg-body-secondary">
+                    <em>Altura: ${data.appearance.height.join(" - ")} </em>
+                </li>
+                <li class="list-group-item bg-body-secondary">
+                    <em>Peso: ${data.appearance.weight.join(" - ")} </em>
+                </li>
+                <li class="list-group-item bg-body-secondary">
+                    <em>Aliases:  ${data.biography.aliases}</em>
+                </li>
+            </ul>
+        </div>
+        </div>
+        </div>
+    </div>            
+    `;
+                    $("#resultado").append(superHero);
+                
+                }
+            }
+        })
+    })
 });

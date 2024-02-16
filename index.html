@@ -25,19 +25,40 @@
         </div>
     </nav>
 
-    <header>
+    <header class="text-center">
         <img id="image" src="./assets/img/super.jpg" alt="hero">
-        <h1 class="text-center mt-5">Encuentra tu SuperHeroe</h1>
     </header>
 
-    <main class="container text-center pt-5">
-        <form id="form">
-            <label id="etiqueta" for="busqueda">Ingresa el número del Superheroe:</label>
-            <input type="text" id="busqueda" name="busqueda" placeholder="Ingresa el número del Superheroe" required>
-            <button class="fs-3 bg-info" id="boton" type="submit">Buscar</button>
-        </form>
-    </main>
-
+    <main class="container mt-5">
+        <section>
+            <h1 class="text-center">Encuentra tu SuperHeroe</h1>
+            <form id="form">
+                <article id="control" class="form-control">
+                    <label id="etiqueta" 
+                        for="busqueda">
+                        Ingresa el número del Superheroe:
+                    </label>
+                    <input class="form-control align-text-center" 
+                        type="text" 
+                        id="busqueda" 
+                        name="busqueda" 
+                        placeholder="Ingresa el número del Superheroe" 
+                        required>
+                    <button class="btn btn-danger fs-3 " 
+                        id="boton" 
+                        type="submit">
+                        Buscar
+                    </button>
+                </article>
+            </form>
+        </section>
+    <section class="row mt-4">
+        <div id="resultado" class="col-md-6"></div>
+        <div id="chartContainer" 
+            class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        </div>
+    </section>
+</main>
 
 
 
@@ -50,7 +71,7 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
         <!-- Enlace jQuery -->
-        <script src="./assets/jQuery.hero.js"></script>
+        <!-- <script src="./assets/jQuery.hero.js"></script> -->
         <!-- Enlace JavaScript -->
         <script src="./assets/js/script.js"></script>
         <!-- Enlace Canvas -->
