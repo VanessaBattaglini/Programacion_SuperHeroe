@@ -1,3 +1,0 @@
-jQuery.fn.hero = (function () {
-    
-    

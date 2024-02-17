@@ -60,9 +60,43 @@ $(document).ready(function () {
     </div>            
     `;
                     $("#resultado").append(superHero);
-                
-                }
+
+        //Diseño de gráficos por con los poderes de cada super heroe
+
+            let poderes = [];
+            for (let value in data.powerstats) {
+            poderes.push({
+                label: value,
+                y: parseInt(data.powerstats[value]),
+            });
             }
+
+            console.log(poderes);
+
+            let option = {
+                title: {
+                text: `Estadísticas de Poder para ${data.name}`,
+                },
+                data: [
+                {
+                type: "pie",
+                startAngle: 45,
+                showInLegend: "true",
+                legendText: "{label}",
+                indexLabel: "{label} ({y})",
+                yValueFormatString: "#,##0.#" % "",
+                dataPoints: poderes,
+                },
+                ],
+            };
+
+            $("#chartContainer").CanvasJSChart(option);
+            } else {
+            alert("No se encontro el heroe con ese id");
+            }
+        },
+                
+            
         })
     })
 });
