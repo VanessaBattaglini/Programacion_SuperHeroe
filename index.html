@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Encuentra tu SuperHeroe</title>
+    <title>:::Encuentra tu SuperHeroe:::</title>
     <!-- Font Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,9 +17,9 @@
 <body>
     <nav class="navbar navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand " href="#">
                 <img src="./assets/img/icon.jpg" alt="heroe" width="80" height="40"
-                    class="d-inline-block align-text-center">
+                    class="d-inline-block align-text-center ml">
                 SuperHero
             </a>
         </div>
@@ -31,20 +31,20 @@
 
     <main class="container mt-5">
         <section>
-            <h1 class="text-center">Encuentra tu SuperHeroe</h1>
+            <h1 class="title text-center">Encuentra tu SuperHeroe</h1>
             <form id="form">
                 <article id="control" class="form-control">
                     <label id="etiqueta" 
                         for="busqueda">
                         Ingresa el número del Superheroe:
                     </label>
-                    <input class="form-control align-text-center" 
+                    <input class="form-group text-center" 
                         type="text" 
                         id="busqueda" 
                         name="busqueda" 
-                        placeholder="Ingresa el número del Superheroe" 
+                        placeholder="Ingresa aquí el número" 
                         required>
-                    <button class="btn btn-danger fs-3 " 
+                    <button class="btn btn-success text-white-50 fs-3 " 
                         id="boton" 
                         type="submit">
                         Buscar
@@ -53,7 +53,7 @@
             </form>
         </section>
     <section class="row mt-4">
-        <div id="resultado" class="col-md-6"></div>
+        <div id="resultado" class="col-md-6 mb-4"></div>
         <div id="chartContainer" 
             class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
         </div>

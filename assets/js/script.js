@@ -5,6 +5,9 @@ $(document).ready(function () {
 
         // Capturar el valor del campo de búsqueda con la información ingresada por el usuario
         let valorBusqueda = $("#busqueda").val();
+
+        $("#busqueda").val(""); //Se limpia el valor del input
+        
         
 
         // Validar que solo ingrese números
@@ -21,7 +24,7 @@ $(document).ready(function () {
             success: function (data) {
                 if (data.response === "success") { //Diseño de las Cards por superheroe
                     let superHero = `
-    <h3 class="text-center">Super Heroe Encontrado</h3>
+    <h3 class="text-center bg-success">Super Heroe Encontrado</h3>
     <div class="card bg-primary-subtle">
         <div class="row">
             <div class="col-md-4">
@@ -59,42 +62,42 @@ $(document).ready(function () {
         </div>
     </div>            
     `;
-                    $("#resultado").append(superHero);
+        $("#resultado").append(superHero);
 
-        //Diseño de gráficos por con los poderes de cada super heroe
+    //Diseño de gráficos por con los poderes de cada super heroe
 
-            let poderes = [];
-            for (let value in data.powerstats) {
-            poderes.push({
-                label: value,
-                y: parseInt(data.powerstats[value]),
-            });
-            }
+        let poderes = [];
+        for (let value in data.powerstats) {
+        poderes.push({
+            label: value,
+            y: parseInt(data.powerstats[value]),
+        });
+        }
 
-            console.log(poderes);
+        console.log(poderes);
 
-            let option = {
-                title: {
-                text: `Estadísticas de Poder para ${data.name}`,
-                },
-                data: [
-                {
-                type: "pie",
-                startAngle: 45,
-                showInLegend: "true",
-                legendText: "{label}",
-                indexLabel: "{label} ({y})",
-                yValueFormatString: "#,##0.#" % "",
-                dataPoints: poderes,
-                },
-                ],
-            };
+        let option = {
+            title: {
+            text: `Estadísticas de Poder para ${data.name}`,
+            },
+            data: [
+            {
+            type: "pie",
+            startAngle: 45,
+            showInLegend: "true",
+            legendText: "{label}",
+            indexLabel: "{label} ({y})",
+            yValueFormatString: "#,##0.#" % "",
+            dataPoints: poderes,
+            },
+            ],
+        };
 
-            $("#chartContainer").CanvasJSChart(option);
-            } else {
-            alert("No se encontro el heroe con ese id");
-            }
-        },
+        $("#chartContainer").CanvasJSChart(option);
+        } else {
+        alert("Debes ingresar un número menor a 732");
+        }
+    },
                 
             
         })
